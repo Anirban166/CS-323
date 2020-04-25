@@ -1,4 +1,3 @@
-
 # creating a class named "Employee":
 class Employee:
    'Common base class for all employees'
@@ -14,7 +13,8 @@ class Employee:
   # increment counter variable
       Employee.empCount += 1 
    
-   # creating a function to display object count:
+   # creating an instance method/function to display object count:
+   # (all instance methods take self as the first argument)
    def displayCount(self):
      print ("Total Employee %d" % Employee.empCount)
    

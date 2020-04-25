@@ -1,13 +1,18 @@
+
 # creating a class named "Employee":
 class Employee:
    'Common base class for all employees'
    # counter variable to hold count of Employee objects
    empCount = 0
-
+   
+   # using the init dunder method:
    def __init__(self, name, salary):
+   # assign the arguments to the instance's 'name' and 'salary' attribute
+   # respectively:
       self.name = name
       self.salary = salary
-      Employee.empCount += 1 # increment counter variable
+  # increment counter variable
+      Employee.empCount += 1 
    
    # creating a function to display object count:
    def displayCount(self):
@@ -27,3 +32,4 @@ emp1.displayEmployee()
 emp2.displayEmployee()
 # displaying total Employee object count:
 print ("Total Employee %d" % Employee.empCount)
+

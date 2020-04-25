@@ -50,6 +50,6 @@ plt.xlabel('data')
 plt.ylabel('target')
 # assign a title as well: (shown at the top)
 plt.title('Support Vector Regression')
-# display the plot:
+# assign the legend and display the plot:
 plt.legend()
 plt.show()

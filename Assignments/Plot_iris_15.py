@@ -43,6 +43,7 @@ models = (svm.SVC(kernel='linear', C=C),
           svm.LinearSVC(C=C),
           svm.SVC(kernel='rbf', gamma=0.7, C=C),
           svm.SVC(kernel='poly', degree=3, C=C))
+# get the models on (x,y) meshgrid with different classifiers:
 models = (clf.fit(X, y) for clf in models)
 
 # assign corresponding titles for the four different plots:

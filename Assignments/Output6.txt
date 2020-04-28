@@ -1,0 +1,407 @@
+[node {
+  name: "MatMul_1/a"
+  op: "Const"
+  device: "/job:localhost/replica:0/task:0/device:CPU:0"
+  attr {
+    key: "_XlaHasReferenceVars"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 2
+          }
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\000\000\024B\000\000\270\301\000\000\200?\000\000\200@"
+      }
+    }
+  }
+  experimental_debug_info {
+    original_node_names: "MatMul_1/a"
+  }
+}
+node {
+  name: "random_uniform_1/shape"
+  op: "Const"
+  device: "/job:localhost/replica:0/task:0/device:CPU:0"
+  attr {
+    key: "_XlaHasReferenceVars"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\002\000\000\000\002\000\000\000"
+      }
+    }
+  }
+  experimental_debug_info {
+    original_node_names: "random_uniform_1/shape"
+  }
+}
+node {
+  name: "random_uniform_1/RandomUniform"
+  op: "RandomUniform"
+  input: "random_uniform_1/shape"
+  device: "/job:localhost/replica:0/task:0/device:CPU:0"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_XlaHasReferenceVars"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "seed"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "seed2"
+    value {
+      i: 0
+    }
+  }
+  experimental_debug_info {
+    original_node_names: "random_uniform_1/RandomUniform"
+  }
+}
+node {
+  name: "MatMul_1"
+  op: "MatMul"
+  input: "MatMul_1/a"
+  input: "random_uniform_1/RandomUniform"
+  device: "/job:localhost/replica:0/task:0/device:CPU:0"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_XlaHasReferenceVars"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+  experimental_debug_info {
+    original_node_names: "MatMul_1"
+  }
+}
+node {
+  name: "_retval_MatMul_1_0_0"
+  op: "_Retval"
+  input: "MatMul_1"
+  device: "/job:localhost/replica:0/task:0/device:CPU:0"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_XlaHasReferenceVars"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "index"
+    value {
+      i: 0
+    }
+  }
+  experimental_debug_info {
+    original_node_names: "_retval_MatMul_1_0_0"
+  }
+}
+library {
+}
+versions {
+  producer: 175
+}
+]
+dev_stats {
+  device: "/host:CPU"
+  node_stats {
+    node_name: "random_uniform_1/RandomUniform:RandomUniform"
+    all_start_micros: 1588046717862877
+    all_end_rel_micros: 20
+    thread_id: 2422425344
+  }
+  node_stats {
+    node_name: "MatMul_1:MatMul"
+    all_start_micros: 1588046717862904
+    all_end_rel_micros: 202
+    thread_id: 2422425344
+  }
+  node_stats {
+    node_name: "ExecutorState::Process"
+    all_start_micros: 1588046717862830
+    all_end_rel_micros: 348
+    timeline_label: "id=13,iter_num=0"
+    thread_id: 2422425344
+  }
+  node_stats {
+    node_name: "ExecutorDoneCallback"
+    all_start_micros: 1588046717863180
+    all_end_rel_micros: 7
+    timeline_label: "id=13"
+    thread_id: 2422425344
+  }
+  thread_names {
+    key: 2422425344
+    value: "tf_Compute"
+  }
+}
+dev_stats {
+  device: "/job:localhost/replica:0/task:0/device:CPU:0"
+  node_stats {
+    node_name: "_SOURCE"
+    all_start_micros: 1588046717862836
+    op_start_rel_micros: 2
+    op_end_rel_micros: 2
+    all_end_rel_micros: 13
+    timeline_label: "_SOURCE = NoOp()"
+    scheduled_micros: 1626727523497291
+    memory_stats {
+    }
+    all_start_nanos: 1588046717862836412
+    op_start_rel_nanos: 2404
+    op_end_rel_nanos: 2515
+    all_end_rel_nanos: 12950
+    scheduled_nanos: 1626727523497291024
+  }
+  node_stats {
+    node_name: "MatMul_1/a"
+    all_start_micros: 1588046717862860
+    op_end_rel_micros: 4
+    all_end_rel_micros: 9
+    output {
+      tensor_description {
+        dtype: DT_FLOAT
+        shape {
+          dim {
+            size: 2
+          }
+          dim {
+            size: 2
+          }
+        }
+        allocation_description {
+          requested_bytes: 16
+          allocator_name: "cpu"
+          ptr: 82064128
+        }
+      }
+    }
+    timeline_label: "MatMul_1/a = Const()"
+    scheduled_micros: 1626727523827581
+    memory_stats {
+      persistent_memory_size: 16
+    }
+    all_start_nanos: 1588046717862860673
+    op_start_rel_nanos: 309
+    op_end_rel_nanos: 3473
+    all_end_rel_nanos: 9160
+    scheduled_nanos: 1626727523827581024
+  }
+  node_stats {
+    node_name: "random_uniform_1/shape"
+    all_start_micros: 1588046717862871
+    op_end_rel_micros: 1
+    all_end_rel_micros: 3
+    output {
+      tensor_description {
+        dtype: DT_INT32
+        shape {
+          dim {
+            size: 2
+          }
+        }
+        allocation_description {
+          requested_bytes: 8
+          allocator_name: "cpu"
+          ptr: 82080704
+        }
+      }
+    }
+    timeline_label: "random_uniform_1/shape = Const()"
+    scheduled_micros: 1626727523848322
+    memory_stats {
+      persistent_memory_size: 8
+    }
+    all_start_nanos: 1588046717862871511
+    op_start_rel_nanos: 133
+    op_end_rel_nanos: 637
+    all_end_rel_nanos: 2987
+    scheduled_nanos: 1626727523848322024
+  }
+  node_stats {
+    node_name: "random_uniform_1/RandomUniform"
+    all_start_micros: 1588046717862876
+    op_end_rel_micros: 19
+    all_end_rel_micros: 25
+    memory {
+      allocator_name: "cpu"
+      total_bytes: 16
+      peak_bytes: 16
+      live_bytes: 16
+      allocation_records {
+        alloc_micros: 1588046717862888
+        alloc_bytes: 16
+      }
+      allocation_records {
+        alloc_micros: 1588046717863111
+        alloc_bytes: -16
+      }
+    }
+    output {
+      tensor_description {
+        dtype: DT_FLOAT
+        shape {
+          dim {
+            size: 2
+          }
+          dim {
+            size: 2
+          }
+        }
+        allocation_description {
+          requested_bytes: 16
+          allocated_bytes: 16
+          allocator_name: "cpu"
+          allocation_id: 1
+          has_single_reference: true
+          ptr: 82145472
+        }
+      }
+    }
+    timeline_label: "random_uniform_1/RandomUniform = RandomUniform(random_uniform_1/shape)"
+    scheduled_micros: 1626727523853007
+    memory_stats {
+    }
+    all_start_nanos: 1588046717862876463
+    op_start_rel_nanos: 297
+    op_end_rel_nanos: 19100
+    all_end_rel_nanos: 24717
+    scheduled_nanos: 1626727523853007024
+  }
+  node_stats {
+    node_name: "MatMul_1"
+    all_start_micros: 1588046717862903
+    op_start_rel_micros: 1
+    op_end_rel_micros: 199
+    all_end_rel_micros: 209
+    memory {
+      allocator_name: "cpu"
+      total_bytes: 16
+      peak_bytes: 16
+      live_bytes: 16
+      allocation_records {
+        alloc_micros: 1588046717862907
+        alloc_bytes: 16
+      }
+    }
+    output {
+      tensor_description {
+        dtype: DT_FLOAT
+        shape {
+          dim {
+            size: 2
+          }
+          dim {
+            size: 2
+          }
+        }
+        allocation_description {
+          requested_bytes: 16
+          allocated_bytes: 16
+          allocator_name: "cpu"
+          allocation_id: 1
+          has_single_reference: true
+          ptr: 82147456
+        }
+      }
+    }
+    timeline_label: "MatMul_1 = MatMul(MatMul_1/a, random_uniform_1/RandomUniform)"
+    scheduled_micros: 1626727523879674
+    memory_stats {
+    }
+    all_start_nanos: 1588046717862903945
+    op_start_rel_nanos: 251
+    op_end_rel_nanos: 198132
+    all_end_rel_nanos: 208507
+    scheduled_nanos: 1626727523879674024
+  }
+  node_stats {
+    node_name: "_retval_MatMul_1_0_0"
+    all_start_micros: 1588046717863152
+    op_start_rel_micros: 1
+    op_end_rel_micros: 3
+    all_end_rel_micros: 7
+    timeline_label: "_retval_MatMul_1_0_0 = _Retval(MatMul_1)"
+    scheduled_micros: 1626727524090893
+    memory_stats {
+    }
+    all_start_nanos: 1588046717863152992
+    op_start_rel_nanos: 802
+    op_end_rel_nanos: 2417
+    all_end_rel_nanos: 6628
+    scheduled_nanos: 1626727524090893024
+  }
+}

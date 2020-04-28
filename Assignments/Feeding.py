@@ -1,14 +1,13 @@
 # importing required libraries:
 import numpy as np
 import tensorflow.compat.v1 as tf 
-# disable active eager execution:
+# disabling active eager execution:
 tf.compat.v1.disable_eager_execution()
 """
 We use tf.placeholder variables here, where:
 A placeholder is a variable that will be assigned data to at a later date. 
 It allows us to create our operations and build our computation graph, 
 without the need of data at the moment of creation. 
-
 creating two placeholder tensors of float32 data type and assigning their
 sum to a third variable:
 """
@@ -21,7 +20,7 @@ Now we can evaluate this graph with multiple inputs by using the 'feed_dict'
 argument of the run method to feed concrete values to our placeholder(s). 
 Note: feed_dict argument can be used to overwrite any tensor in the graph.
 """
-# create a session:
+# creating a session:
 sess = tf.Session()
 # giving values of 3.0 and 4.5 to x and y respectively, 
 # resulting in z = 3 + 4.5 = 7.5:
